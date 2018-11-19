@@ -1,0 +1,52 @@
+﻿@model Chushka.ViewModels.ProductsCreateViewModel
+@{
+
+}
+
+<h1 class="text-center">Create Product</h1>
+<hr class="hr-2 bg-dark" />
+<form class="mx-auto half-width" method="post" asp-controller="Products" asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Name">Name</label>
+        <input type="text" asp-for="Name" class="form-control" placeholder="Name...">
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price</label>
+        <input type="number" asp-for="Price" class="form-control" placeholder="Price...">
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input type="text" asp-for="Description" class="form-control" row = 4 placeholder="Description...">
+    </div>
+    <div class="form-group">
+        <h3 class="text-center">Product Type</h3>
+        <hr class="hr-2 w-50 bg-dark">
+        <div class="row mt-4">
+            <div class="col">
+                <input type="radio" id="food" value="Food" asp-for="Type">
+                <label for="food">Food</label>
+            </div>
+            <div class="col">
+                <input type="radio" id="domestic" value="Domestic" asp-for="Type">
+                <label for="domestic">Domestic</label>
+            </div>
+            <div class="col">
+                <input type="radio" id="health" value="Health" asp-for="Type">
+                <label for="health">Health</label>
+            </div>
+            <div class="col">
+                <input type="radio" id="cosmetic" value="Cosmetic" asp-for="Type">
+                <label for="cosmetic">Cosmetic</label>
+            </div>
+            <div class="col">
+                <input type="radio" id="other" value="Other" asp-for="Type">
+                <label for="other">Other</label>
+            </div>
+        </div>
+        <hr class="hr-2 w-50 bg-dark">
+    </div>
+    
+    <div class="button-holder mt-2 d-flex justify-content-center">
+        <button type="submit" class="btn chushka-bg-color">Create</button>
+    </div>
+</form>

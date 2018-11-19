@@ -1,0 +1,70 @@
+﻿@model List<Chushka.ViewModels.ProductListViewModel>
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="jumbotron mt-3 chushka-bg-color">
+        <h1>Welcome to Chushka Universal Web Shop</h1>
+        <hr class="bg-white" />
+        <h3><a class="nav-link-dark" asp-controller="Account" asp-action="Login">Login</a> if you have an account.</h3>
+        <h3><a class="nav-link-dark" asp-controller="Account" asp-action="Register">Register</a> if you don't.</h3>
+    </div>
+}
+else
+{
+    <h2 class="text-center">Greetings, @User.Identity.Name</h2>
+
+    if (User.IsInRole("Admin"))
+    {
+        <h4 class="text-center">Enjoy your work today!</h4>
+    }
+    else
+    {
+        <h4 class="text-center">Feel free to view and order any of our products.</h4>
+    }
+    <hr class="hr-2 bg-dark" />
+
+    <div class="row justify-content-center">
+    @foreach (var m in Model)
+        {
+        <div class="col-5ths">
+
+            <div class="chushka-bg-color text-center rounded m-3">
+                <a class="no-underline" asp-controller="Products" asp-action="Details" asp-route-id="@m.Id">
+                    <div class="text-white px-5 py-3">
+                        <h5>@m.Name</h5>
+                        <hr class="hr-2 bg-white">
+                        <div class="index-description">@m.Description</div>
+                        <hr class="hr-2 bg-white">
+                        <h5>$@m.Price</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+    }
+    </div>
+        @*for (int i = 0; i < Model.Count(); i += 5)
+            {
+                <div class="fives">
+                    @{
+                        for (int j = 0; j <= 4 && i + j < Model.Count(); j++)
+                        {
+                            <div class="row justify-content-center">
+                                <div class="chushka-bg-color text-center rounded m-3">
+                                    <a class="no-underline" asp-controller="Products" asp-action="Details" asp-route-id="@Model[j + i].Id">
+                                        <div class="text-white px-5 py-3">
+                                            <h5>@Model[j + i].Name</h5>
+                                            <hr class="hr-2 bg-white">
+                                            <div class="index-description">@Model[j + i].Description</div>
+                                            <hr class="hr-2 bg-white">
+                                            <h5>$@Model[j + i].Price</h5>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            }*@
+
+
+        }
