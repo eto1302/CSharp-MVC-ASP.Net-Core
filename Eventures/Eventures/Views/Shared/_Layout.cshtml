@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Eventures</title>
+    <link rel="stylesheet" type="text/css" href="~/css/reset-css.css">
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <script src="~/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <nav class="navbar navbar-expand-lg eventures-bg-color">
+            <a class="navbar-brand nav-link-black font-weight-bold" href="/">Eventures</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            @{
+                await Html.RenderPartialAsync("_NavbarPartial");
+            }
+        </nav>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+        <div class="container-fluid eventures-bg-color">
+            <div class="text-gray p-2 text-center">
+                &copy; CopyRight Eventures Inc. 2018-2018. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

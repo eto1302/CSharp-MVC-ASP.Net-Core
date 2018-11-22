@@ -1,0 +1,9 @@
+C:\Users\vikmar\source\repos\Eventures\Eventures.Models\bin\Debug\netcoreapp2.1\Eventures.Models.deps.json
+C:\Users\vikmar\source\repos\Eventures\Eventures.Models\bin\Debug\netcoreapp2.1\Eventures.Models.dll
+C:\Users\vikmar\source\repos\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.csprojAssemblyReference.cache
+C:\Users\vikmar\source\repos\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.csproj.CoreCompileInputs.cache
+C:\Users\vikmar\source\repos\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.AssemblyInfoInputs.cache
+C:\Users\vikmar\source\repos\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.AssemblyInfo.cs
+C:\Users\vikmar\source\repos\Eventures\Eventures.Models\bin\Debug\netcoreapp2.1\Eventures.Models.pdb
+C:\Users\vikmar\source\repos\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.dll
+C:\Users\vikmar\source\repos\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.pdb
