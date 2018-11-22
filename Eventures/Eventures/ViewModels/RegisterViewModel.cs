@@ -10,14 +10,17 @@ namespace Eventures.ViewModels
     {
         [Required]
         [Display(Name = "Username")]
+        [MinLength(3)]
+        [RegularExpression(@"[a-zA-Z0-9_\-.*~]+")]
         public string Username { get; set; }
 
         [Required]
+        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 0)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 5)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -38,6 +41,8 @@ namespace Eventures.ViewModels
 
         [Required]
         [Display(Name = "UCN")]
+        [RegularExpression(@"[0-9]+")]
+        [StringLength(10, MinimumLength = 10, ErrorMessage = "The Unique Citizen Number should be 10 digits exactly")]
         public string UCN { get; set; }
     }
 }

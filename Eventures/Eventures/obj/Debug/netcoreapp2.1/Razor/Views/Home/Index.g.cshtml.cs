@@ -66,7 +66,7 @@ using Eventures.Models;
             WriteLiteral("    <div class=\"jumbotron mt-3 eventures-bg-color\">\r\n        <h1>Eventures - The best ticket service in the world</h1>\r\n        <hr class=\"bg-dark hr-2\" />\r\n        <h3>");
             EndContext();
             BeginContext(212, 92, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86f4c80c56894cefae96f8062b94a4a3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "41af2ae6919d4084a3f1a190e3923026", async() => {
                 BeginContext(295, 5, true);
                 WriteLiteral("Login");
                 EndContext();
@@ -91,7 +91,7 @@ using Eventures.Models;
             WriteLiteral(" to start \"eventing\".</h3>\r\n        <h3>");
             EndContext();
             BeginContext(344, 98, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0cdcd36735e346beb6454233373ac703", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6d1f5b6c4099410d950d6c6f67563475", async() => {
                 BeginContext(430, 8, true);
                 WriteLiteral("Register");
                 EndContext();

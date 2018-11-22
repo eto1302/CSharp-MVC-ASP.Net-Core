@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Eventures.Attributes.Validation;
 
 namespace Eventures.ViewModels
 {
@@ -10,6 +11,7 @@ namespace Eventures.ViewModels
     {
         [Required]
         [Display(Name = "Name")]
+        [MinLength(10)]
         public string Name { get; set; }
 
         [Required]
@@ -26,10 +28,12 @@ namespace Eventures.ViewModels
 
         [Required]
         [Display(Name = "TotalTickets")]
+        [NonZeroInteger]
         public int TotalTickets { get; set; }
 
         [Required]
         [Display(Name = "PricePerTicket")]
+        [RegularExpression(@"[0-9]*\.{1}[0-9]*")]
         public decimal PricePerTicket { get; set; }
     }
 }
