@@ -41,7 +41,7 @@ namespace Eventures.ViewModels
 
         [Required]
         [Display(Name = "UCN")]
-        [RegularExpression(@"[0-9]+")]
+        [RegularExpression(@"[0-9]+", ErrorMessage = "The Unique Citizen Number should be a number")]
         [StringLength(10, MinimumLength = 10, ErrorMessage = "The Unique Citizen Number should be 10 digits exactly")]
         public string UCN { get; set; }
     }

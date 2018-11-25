@@ -1143,11 +1143,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vikmar\\source\\repos\\Eventures\\Eventures.Models\\Eventures.Models.csproj",
+      "projectUniqueName": "C:\\Users\\vikmar\\Desktop\\SoftUni\\SoftUni_C#Web\\CSharp-MVC-ASP.Net-Core\\Eventures\\Eventures.Models\\Eventures.Models.csproj",
       "projectName": "Eventures.Models",
-      "projectPath": "C:\\Users\\vikmar\\source\\repos\\Eventures\\Eventures.Models\\Eventures.Models.csproj",
+      "projectPath": "C:\\Users\\vikmar\\Desktop\\SoftUni\\SoftUni_C#Web\\CSharp-MVC-ASP.Net-Core\\Eventures\\Eventures.Models\\Eventures.Models.csproj",
       "packagesPath": "C:\\Users\\vikmar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vikmar\\source\\repos\\Eventures\\Eventures.Models\\obj\\",
+      "outputPath": "C:\\Users\\vikmar\\Desktop\\SoftUni\\SoftUni_C#Web\\CSharp-MVC-ASP.Net-Core\\Eventures\\Eventures.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -33,7 +33,7 @@ namespace Eventures.ViewModels
 
         [Required]
         [Display(Name = "PricePerTicket")]
-        [RegularExpression(@"[0-9]*\.{1}[0-9]*")]
+        [RegularExpression(@"[0-9]*\.{1}[0-9]*", ErrorMessage = "Price Per Ticket should be a decimal number.")]
         public decimal PricePerTicket { get; set; }
     }
 }

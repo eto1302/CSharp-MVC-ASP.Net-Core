@@ -4,15 +4,17 @@
 }
 
 <h1 class="text-center">Login</h1>
-<hr class="qt-width eventures-bg-color hr-2"/>
+<hr class="qt-width eventures-bg-color hr-2" />
 <form class="mx-auto qt-width" method="post" asp-controller="Account" asp-action="Login">
     <div class="form-group text-center font-weight-bold">
         <label asp-for="Username">Username</label>
         <input type="text" asp-for="Username" class="form-control" placeholder="Username">
+        <span asp-validation-for="Username" class="text-danger"></span>
     </div>
     <div class="form-group text-center font-weight-bold">
         <label asp-for="Password">Password</label>
         <input type="password" asp-for="Password" class="form-control" placeholder="Password">
+        <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <hr class="eventures-bg-color hr-2" />
     <div class="form-group text-center ">
@@ -25,10 +27,14 @@
     <div class="button-holder d-flex justify-content-center">
         <button type="submit" class="btn eventures-bg-color">Login</button>
     </div>
-    <div  class="text-center">
+    <div class="text-center">
         <h10><a class="nav-link-white text-primary text-center" asp-controller="Home" asp-action="Index">Forgot your password?</a></h10>
     </div>
-    <div class =" text-center">
+    <div class=" text-center">
         <h10><a class="nav-link-white text-primary text-center" asp-controller="Account" asp-action="Register">Register as a new user</a></h10>
     </div>
-</form>   
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

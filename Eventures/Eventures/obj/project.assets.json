@@ -12245,11 +12245,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vikmar\\source\\repos\\Eventures\\Eventures\\Eventures.csproj",
+      "projectUniqueName": "C:\\Users\\vikmar\\Desktop\\SoftUni\\SoftUni_C#Web\\CSharp-MVC-ASP.Net-Core\\Eventures\\Eventures\\Eventures.csproj",
       "projectName": "Eventures",
-      "projectPath": "C:\\Users\\vikmar\\source\\repos\\Eventures\\Eventures\\Eventures.csproj",
+      "projectPath": "C:\\Users\\vikmar\\Desktop\\SoftUni\\SoftUni_C#Web\\CSharp-MVC-ASP.Net-Core\\Eventures\\Eventures\\Eventures.csproj",
       "packagesPath": "C:\\Users\\vikmar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vikmar\\source\\repos\\Eventures\\Eventures\\obj\\",
+      "outputPath": "C:\\Users\\vikmar\\Desktop\\SoftUni\\SoftUni_C#Web\\CSharp-MVC-ASP.Net-Core\\Eventures\\Eventures\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12268,8 +12268,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\vikmar\\source\\repos\\Eventures\\Eventures.Models\\Eventures.Models.csproj": {
-              "projectPath": "C:\\Users\\vikmar\\source\\repos\\Eventures\\Eventures.Models\\Eventures.Models.csproj"
+            "C:\\Users\\vikmar\\Desktop\\SoftUni\\SoftUni_C#Web\\CSharp-MVC-ASP.Net-Core\\Eventures\\Eventures.Models\\Eventures.Models.csproj": {
+              "projectPath": "C:\\Users\\vikmar\\Desktop\\SoftUni\\SoftUni_C#Web\\CSharp-MVC-ASP.Net-Core\\Eventures\\Eventures.Models\\Eventures.Models.csproj"
             }
           }
         }

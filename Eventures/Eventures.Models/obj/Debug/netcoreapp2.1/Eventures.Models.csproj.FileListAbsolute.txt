@@ -7,3 +7,12 @@ C:\Users\vikmar\source\repos\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\
 C:\Users\vikmar\source\repos\Eventures\Eventures.Models\bin\Debug\netcoreapp2.1\Eventures.Models.pdb
 C:\Users\vikmar\source\repos\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.dll
 C:\Users\vikmar\source\repos\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.pdb
+C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures.Models\bin\Debug\netcoreapp2.1\Eventures.Models.deps.json
+C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures.Models\bin\Debug\netcoreapp2.1\Eventures.Models.dll
+C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures.Models\bin\Debug\netcoreapp2.1\Eventures.Models.pdb
+C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.csprojAssemblyReference.cache
+C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.csproj.CoreCompileInputs.cache
+C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.AssemblyInfoInputs.cache
+C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.AssemblyInfo.cs
+C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.dll
+C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures.Models\obj\Debug\netcoreapp2.1\Eventures.Models.pdb

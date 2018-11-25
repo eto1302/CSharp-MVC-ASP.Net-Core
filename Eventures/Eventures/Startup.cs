@@ -49,7 +49,7 @@ namespace Eventures
                     opt.Password.RequireNonAlphanumeric = false;
                     opt.Password.RequireUppercase = false;
                     opt.Password.RequiredUniqueChars = 0;
-                    opt.Password.RequiredLength = 3;
+                    opt.Password.RequiredLength = 5;
                 })
                 .AddDefaultUI()
                 .AddDefaultTokenProviders()

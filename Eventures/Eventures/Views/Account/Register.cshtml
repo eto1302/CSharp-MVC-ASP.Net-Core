@@ -10,20 +10,24 @@
         <div class="form-group col-6 font-weight-bold text-center">
             <label asp-for="Username">Username</label>
             <input type="text" asp-for="Username" class="form-control" placeholder="Username">
+            <span asp-validation-for="Username" class="text-danger"></span>
         </div>
         <div class="form-group col-6  font-weight-bold text-center">
             <label asp-for="Email">Email</label>
             <input type="email" asp-for="Email" class="form-control" placeholder="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
     </div>
     <div class="row mx-auto">
         <div class="form-group col-6  font-weight-bold text-center">
             <label asp-for="Password">Password</label>
             <input type="password" asp-for="Password" class="form-control" placeholder="Password">
+            <span asp-validation-for="Password" class="text-danger"></span>
         </div>
         <div class="form-group col-6  font-weight-bold text-center">
             <label asp-for="ConfirmPassword">Confirm Password</label>
             <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password">
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
     </div>
     <hr class="eventures-bg-color hr-2" />
@@ -31,19 +35,26 @@
         <div class="form-group text-center font-weight-bold col-6 ">
             <label asp-for="FirstName">First Name</label>
             <input type="text" asp-for="FirstName" class="form-control" placeholder="First Name">
+            <span asp-validation-for="FirstName" class="text-danger"></span>
         </div>
         <div class="form-group text-center font-weight-bold col-6 ">
             <label asp-for="LastName">Last Name</label>
             <input type="text" asp-for="LastName" class="form-control" placeholder="Last Name">
+            <span asp-validation-for="LastName" class="text-danger"></span>
         </div>
     </div>
     <hr class="eventures-bg-color hr-2" />
     <div class="form-group text-center font-weight-bold mx-auto">
         <label asp-for="UCN">UCN</label>
         <input type="text" asp-for="UCN" class="form-control" placeholder="Universal Citizen Number" />
+        <span asp-validation-for="UCN" class="text-danger"></span>
     </div>
     <hr class="eventures-bg-color hr-2" />
     <div class="button-holder d-flex justify-content-center">
         <button type="submit" class="btn eventures-bg-color">Register</button>
     </div>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
