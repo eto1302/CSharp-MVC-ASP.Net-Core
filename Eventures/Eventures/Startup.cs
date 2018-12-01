@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Eventures.Data;
 using Eventures.Middlewares.MiddlewaresExtensions;
 using Eventures.Models;
+using Eventures.Services;
+using Eventures.Services.Contracts;
 using Eventures.Utilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +39,7 @@ namespace Eventures
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
@@ -55,8 +58,14 @@ namespace Eventures
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+           
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddLogging();
+
+            services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IOrdersService, OrdersService>();
+            services.AddTransient<IEventService, EventService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

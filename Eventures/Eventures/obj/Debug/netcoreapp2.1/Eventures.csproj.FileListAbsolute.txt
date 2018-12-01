@@ -50,7 +50,6 @@ C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\
 C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\Eventures.csproj.CoreCompileInputs.cache
 C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\Eventures.RazorAssemblyInfo.cache
 C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\Eventures.RazorAssemblyInfo.cs
-C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\Eventures.AssemblyInfoInputs.cache
 C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\Eventures.AssemblyInfo.cs
 C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\Eventures.TagHelpers.input.cache
@@ -76,3 +75,7 @@ C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\
 C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\Eventures.csproj.CopyComplete
 C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\Eventures.dll
 C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\Eventures.pdb
+C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Events\MyEvents.g.cshtml.cs
+C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_OrderEventPartial.g.cshtml.cs
+C:\Users\vikmar\Desktop\SoftUni\SoftUni_C#Web\CSharp-MVC-ASP.Net-Core\Eventures\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Orders\All.g.cshtml.cs

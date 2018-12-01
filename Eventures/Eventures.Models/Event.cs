@@ -29,5 +29,6 @@ namespace Eventures.Models
 
         [Required]
         public decimal PricePerTicket { get; set; }
+       
     }
 }
