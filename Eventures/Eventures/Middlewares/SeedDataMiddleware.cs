@@ -47,7 +47,7 @@ namespace Eventures.Middlewares
                     Email = "admin@adminpass",
                     FirstName = "FirstName",
                     LastName = "LastName",
-                    UCN = "1234567890"
+                    UniqueCitizenNumber = "1234567890"
                 };
 
                 await userManager.CreateAsync(user, "adminpass");

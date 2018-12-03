@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
 namespace Eventures.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
     public class Event
     {
         public string Id { get; set; }
@@ -18,10 +17,10 @@ namespace Eventures.Models
         public string Place { get; set; }
 
         [Required]
-        public DateTime Start { get; set; }
-
+        public DateTime StartDate { get; set; }
+        
         [Required]
-        public DateTime End { get; set; }
+        public DateTime EndDate { get; set; }
 
         [Required]
         [Range(1, int.MaxValue)]
@@ -29,6 +28,7 @@ namespace Eventures.Models
 
         [Required]
         public decimal PricePerTicket { get; set; }
-       
+
+        public ICollection<Order> Orders { get; set; }
     }
 }

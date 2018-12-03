@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Eventures.Models;
-using Eventures.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
 
 namespace Eventures.Controllers
 {
     public class AccountController : Controller
     {
         private SignInManager<EventuresUser> signInManager;
+        private IMapper mapper;
 
-        public AccountController(SignInManager<EventuresUser> signInManager)
+        public AccountController(SignInManager<EventuresUser> signInManager, IMapper mapper)
         {
             this.signInManager = signInManager;
+            this.mapper = mapper;
         }
 
 
@@ -31,52 +33,46 @@ namespace Eventures.Controllers
             return this.View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
-        {
-            EventuresUser user = signInManager.UserManager.Users.FirstOrDefault(u => u.UserName == model.Username);
+        //[HttpPost]
+        //public async Task<IActionResult> Login(LoginViewModel model)
+        //{
+        //    EventuresUser user = signInManager.UserManager.Users.FirstOrDefault(u => u.UserName == model.Username);
 
-            var result =
-                this.signInManager.PasswordSignInAsync(user, model.Password, isPersistent: false, lockoutOnFailure: false).Result;
+        //    var result =
+        //        this.signInManager.PasswordSignInAsync(user, model.Password, isPersistent: false, lockoutOnFailure: false).Result;
 
-            if (result.Succeeded)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+        //    if (result.Succeeded)
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
 
-            return this.View();
-        }
+        //    return this.View();
+        //}
 
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
-        {
-            var user = new EventuresUser()
-            {
-                Email = model.Email,
-                UserName = model.Username,
-                UCN = model.UCN,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-            };
+        //[HttpPost]
+        //public async Task<IActionResult> Register(RegisterViewModel model)
+        //{
+        //    var user = this.mapper.Map<EventuresUser>(model);
+            
 
-            var result = this.signInManager.UserManager.CreateAsync(user, model.Password).Result;
-            if (result.Succeeded)
-            {
-                await signInManager.SignInAsync(user, isPersistent: false);
-                if (signInManager.UserManager.Users.Count() == 1)
-                {
-                    await signInManager.UserManager.AddToRoleAsync(user, "Admin");
-                }
-                else
-                {
-                    await signInManager.UserManager.AddToRoleAsync(user, "User");
-                }
+        //    var result = this.signInManager.UserManager.CreateAsync(user, model.Password).Result;
+        //    if (result.Succeeded)
+        //    {
+        //        await signInManager.SignInAsync(user, isPersistent: false);
+        //        if (signInManager.UserManager.Users.Count() == 1)
+        //        {
+        //            await signInManager.UserManager.AddToRoleAsync(user, "Admin");
+        //        }
+        //        else
+        //        {
+        //            await signInManager.UserManager.AddToRoleAsync(user, "User");
+        //        }
 
-                return RedirectToAction("Index", "Home");
-            }
+        //        return RedirectToAction("Index", "Home");
+        //    }
 
-            return this.View();
-        }
+        //    return this.View();
+        //}
 
 
         [HttpGet]

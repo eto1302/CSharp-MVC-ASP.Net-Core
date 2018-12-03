@@ -1,58 +1,78 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Eventures.Data;
-using Eventures.Models;
-using Eventures.Services.Contracts;
-using Eventures.ViewModels;
-using Microsoft.EntityFrameworkCore;
-
 namespace Eventures.Services
 {
-    public class OrdersService : IOrdersService
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using Contracts;
+    using Data;
+    using Eventures.Models;
+    using Microsoft.EntityFrameworkCore;
+    using Models;
+
+    public class OrdersService : DataService, IOrdersService
     {
-        public OrdersService(ApplicationDbContext context, IEventService eventService)
+        public OrdersService(ApplicationDbContext context) : base(context)
         {
-            this.context = context;
-            this.eventService = eventService;
         }
 
-        public ApplicationDbContext context { get; set; }
-        public IEventService eventService { get; set; }
-
-        public List<Order> GetMyOrders(EventuresUser User)
+        public async Task<bool> Create(OrderServiceModel model, string userName)
         {
-            var orders = this.context.Orders.Include(o => o.Event).Where(o => o.Customer == User).ToList();
+            if (!this.IsEntityStateValid(model))
+            {
+                return false;
+            }
+
+            var user = await this.context.Users.SingleOrDefaultAsync(u => u.UserName == userName);
+
+            var ev = await this.context.Events.SingleOrDefaultAsync(e => e.Id == model.EventId);
+            if (user == null || ev == null || ev.TotalTickets < model.TicketsCount)
+            {
+                
+                    return false;
+                
+            }
+
+            var order = Mapper.Map<Order>(model);
+
+            order.User = user;
+            
+            ev.TotalTickets -= model.TicketsCount;
+
+            this.context.Events.Update(ev);
+
+            await this.context.Orders.AddAsync(order);
+
+            await this.context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<IEnumerable<OrderServiceModel>> GetAll()
+        {
+            var orders = await this.context.Orders
+                .ProjectTo<OrderServiceModel>()
+                .ToArrayAsync();
+
             return orders;
         }
 
-        public async void Order(OrderEventViewModel model)
+        public async Task<IEnumerable<OrderServiceModel>> GetAllForUser(string userName)
         {
-            await this.context.Orders.AddAsync(new Order
-            {
-                Customer = model.User,
-                Event = eventService.GetEventById(model.EventId),
-                OrderedOn = DateTime.Now,
-                TicketsCount = model.TicketsCount
-            });
-        }
+            var user = await this.context.Users.SingleOrDefaultAsync(u => u.UserName == userName);
 
-        public List<AllOrdersViewModel> GetAll()
-        {
-            List<Order> orders = this.context.Orders.Include(o => o.Event).ToList();
-            List<AllOrdersViewModel> result = new List<AllOrdersViewModel>();
-            foreach (var order in orders)
+            if (user == null)
             {
-                result.Add(new AllOrdersViewModel
-                {
-                   CustomerName = order.Customer.UserName,
-                   EventName = order.Event.Name,
-                   OrderedOn = order.OrderedOn.ToString("dd-MMM-yy hh:mm:ss")
-                });
+                return null;
             }
 
-            return result;
+            var orders = await this.context.Orders
+                .Where(o => o.User.Id == user.Id)
+                .ProjectTo<OrderServiceModel>()
+                .ToArrayAsync();
+
+            return orders;
         }
     }
 }

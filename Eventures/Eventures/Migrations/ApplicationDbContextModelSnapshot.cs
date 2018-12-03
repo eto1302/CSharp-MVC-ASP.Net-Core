@@ -24,7 +24,7 @@ namespace Eventures.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("End");
+                    b.Property<DateTime>("EndDate");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -36,7 +36,7 @@ namespace Eventures.Migrations
 
                     b.Property<decimal>("PricePerTicket");
 
-                    b.Property<DateTime>("Start");
+                    b.Property<DateTime>("StartDate");
 
                     b.Property<int>("TotalTickets");
 
@@ -88,7 +88,7 @@ namespace Eventures.Migrations
 
                     b.Property<bool>("TwoFactorEnabled");
 
-                    b.Property<string>("UCN")
+                    b.Property<string>("UniqueCitizenNumber")
                         .IsRequired()
                         .HasMaxLength(100);
 
@@ -113,19 +113,21 @@ namespace Eventures.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CustomerId");
-
-                    b.Property<string>("EventId");
+                    b.Property<string>("EventId")
+                        .IsRequired();
 
                     b.Property<DateTime>("OrderedOn");
 
                     b.Property<int>("TicketsCount");
 
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
-
                     b.HasIndex("EventId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -242,13 +244,15 @@ namespace Eventures.Migrations
 
             modelBuilder.Entity("Eventures.Models.Order", b =>
                 {
-                    b.HasOne("Eventures.Models.EventuresUser", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-
                     b.HasOne("Eventures.Models.Event", "Event")
-                        .WithMany()
-                        .HasForeignKey("EventId");
+                        .WithMany("Orders")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Eventures.Models.EventuresUser", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

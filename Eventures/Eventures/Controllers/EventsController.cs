@@ -5,12 +5,14 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Security.Principal;
 using System.Security.Claims;
+using AutoMapper;
 using Eventures.Attributes;
 using Eventures.Data;
 using Eventures.Models;
 using Eventures.Services;
 using Eventures.Services.Contracts;
-using Eventures.ViewModels;
+using Eventures.Services.Models;
+using Eventures.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
@@ -24,14 +26,15 @@ namespace Eventures.Controllers
     {
 
         public UserManager<EventuresUser> userManager { get; set; }
-        public IEventService eventService { get; set; }
-
-        public EventsController(ApplicationDbContext dbContext, ILogger<EventsController> logger, UserManager<EventuresUser> userManager, IEventService eventService)
+        public IEventsService eventService { get; set; }
+        public IOrdersService orderService { get; set; }
+        public EventsController(ApplicationDbContext dbContext, ILogger<EventsController> logger, UserManager<EventuresUser> userManager, IEventsService eventService, IOrdersService orderService)
         {
             this.DbContext = dbContext;
             this.logger = logger;
             this.userManager = userManager;
             this.eventService = eventService;
+            this.orderService = orderService;
         }
 
         private readonly ApplicationDbContext DbContext;
@@ -54,21 +57,16 @@ namespace Eventures.Controllers
         [HttpPost]
         [TypeFilter(typeof(AdminLoggingCreateEventAttribute))]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create(CreateEventsViewModel model)
+        public async Task<IActionResult> Create(EventCreateBindingModel model)
         {
-            var eventVar = new Event
-            {
-                Name = model.Name,
-                Place = model.Place,
-                Start = model.Start,
-                End = model.End,
-                TotalTickets = model.TotalTickets,
-                PricePerTicket = model.PricePerTicket
-            };
-            await this.DbContext.Events.AddAsync(eventVar);
-            await this.DbContext.SaveChangesAsync();
-            this.logger.LogInformation($"{DateTime.Now} Administrator {this.User.Identity.Name} create event {eventVar.Name} ({eventVar.Start} / {eventVar.End})");
-            return this.RedirectToAction("Index", "Home");
+            
+            var serviceModel = Mapper.Map<EventServiceModel>(model);
+
+            await this.eventService.CreateAsync(serviceModel);
+
+            this.logger.LogInformation("Event created: " + serviceModel.Name, serviceModel);
+
+            return this.RedirectToAction("All");
         }
 
 
@@ -76,38 +74,29 @@ namespace Eventures.Controllers
         [Authorize]
         public async Task<IActionResult> MyEvents()
         {
-            List<MyEventsViewModel> events = new List<MyEventsViewModel>();
-            EventuresUser user = await this.userManager.GetUserAsync(this.User);
-            var orders = this.DbContext.Orders.Include(o => o.Event).Where(o => o.Customer == user).ToList();
-            foreach (var o in orders)
-            {
-                events.Add(new MyEventsViewModel
-                {
-                    End = o.Event.End.ToString("dd-MMM-yy hh:mm:ss"),
-                    Name = o.Event.Name,
-                    Start = o.Event.Start.ToString("dd-MMM-yy hh:mm:ss"),
-                    Tickets = o.TicketsCount
-                });
-            }
+            var orders = (await this.orderService
+                    .GetAllForUser(this.User.Identity.Name))
+                .Select(Mapper.Map<OrderListingViewModel>);
 
-            return this.View(events);
+            return this.View(orders);
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Order(OrderEventViewModel model)
+        public async Task<IActionResult> Order(OrderCreateBindingModel model)
         {
 
-            model.User = await this.userManager.GetUserAsync(this.User);
-            await this.DbContext.Orders.AddAsync(new Order
+            var serviceModel = Mapper.Map<OrderServiceModel>(model);
+
+            serviceModel.OrderedOn = DateTime.Now;
+
+            var result = await this.orderService.Create(serviceModel, this.User.Identity.Name);
+            if (!result)
             {
-                Customer = model.User,
-                Event = this.DbContext.Events.ToList().FirstOrDefault(e => e.Id == model.EventId),
-                OrderedOn = DateTime.Now,
-                TicketsCount = model.TicketsCount
-            });
-            this.DbContext.SaveChanges();
-            return RedirectToAction("All", "Events");
+                return this.RedirectToAction("All", "Events");
+            }
+
+            return this.RedirectToAction("MyEvents", "Events");
         }
     }
 }

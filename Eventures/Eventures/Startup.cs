@@ -15,9 +15,11 @@ using Eventures.Models;
 using Eventures.Services;
 using Eventures.Services.Contracts;
 using Eventures.Utilities;
+using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
 
 namespace Eventures
 {
@@ -62,15 +64,22 @@ namespace Eventures
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddLogging();
-
-            services.AddTransient<IAccountService, AccountService>();
+            
             services.AddTransient<IOrdersService, OrdersService>();
-            services.AddTransient<IEventService, EventService>();
+            services.AddTransient<IEventsService, EventsService>();
+            services.AddAuthentication()
+                .AddFacebook(facebookOptions =>
+                    {
+                        facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                        facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                    }
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider provider, ILoggerFactory loggerFactory)
         {
+            Mapper.Initialize(config => config.AddProfile<MappingConfiguration>());
             loggerFactory.AddDebug();
 
             if (env.IsDevelopment())

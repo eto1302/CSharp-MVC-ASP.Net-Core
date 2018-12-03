@@ -1,6 +1,6 @@
-﻿@model List<Eventures.ViewModels.AllOrdersViewModel>
+﻿@model IEnumerable<Eventures.Web.Models.OrderListingViewModel>
 @{
-
+    int i = 0;
 }
 
 <h1 class="text-center">All Orders</h1>
@@ -16,13 +16,13 @@
     </thead>
     <tbody>
 
-    @for (int i = 0; i < @Model.Count; i++)
+    @foreach(var m in @Model)
     {
         <tr>
-            <th scope="row">@(i + 1)</th>
-            <td>@Model[i].EventName</td>
-            <td>@Model[i].CustomerName</td>
-            <td>@Model[i].OrderedOn</td>
+            <th scope="row">@(i ++)</th>
+            <td>@m.Event.Name</td>
+            <td>@m.UserName</td>
+            <td>@m.OrderedOn</td>
         </tr>
     }
     </tbody>

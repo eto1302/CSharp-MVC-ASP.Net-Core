@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Eventures.Models;
+using Eventures.Web.Models;
 
 namespace Eventures.Controllers
 {
