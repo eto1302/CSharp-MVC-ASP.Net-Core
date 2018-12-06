@@ -77,7 +77,7 @@ namespace Eventures
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider provider, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider provider, ILoggerFactory loggerFactory, ApplicationDbContext context)
         {
             Mapper.Initialize(config => config.AddProfile<MappingConfiguration>());
             loggerFactory.AddDebug();
@@ -92,7 +92,6 @@ namespace Eventures
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
             app.UseDataSeeder();
             app.UseHttpsRedirection();
             app.UseStaticFiles();

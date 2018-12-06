@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Remotion.Linq.Parsing.Structure.IntermediateModel;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace Eventures.Controllers
 {
@@ -42,9 +43,19 @@ namespace Eventures.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult All()
+        public IActionResult All(int? page)
         {
-            return this.View(this.DbContext.Events.ToList());
+            var events = this.eventService.GetAll();
+            
+            var viewModels = new List<EventListingViewModel>();
+            foreach (var eventureEvent in events)
+            {
+                var eventViewModel = Mapper.Map<EventListingViewModel>(eventureEvent);
+                viewModels.Add(eventViewModel);
+            }
+            var nextPage = page ?? 1;
+            var pagedViewModels = viewModels.ToPagedList(nextPage, 3);
+            return this.View(pagedViewModels);
         }
 
         [HttpGet]

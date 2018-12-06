@@ -1,5 +1,7 @@
 ﻿@using Eventures.Web.Models
-@model List<Event>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<EventListingViewModel>
 @{
 
 }
@@ -25,16 +27,21 @@
                 <td>@Model[i].StartDate.ToString("dd-MMM-yy hh-mm-ss")</td>
                 <td>@Model[i].EndDate.ToString("dd-MMM-yy hh-mm-ss")</td>
                 <td>
-                    
+
                     @await Html.PartialAsync("_OrderEventPartial", new OrderCreateBindingModel()
                     {
                         EventId = @Model[i].Id
                     })
-                    
+
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<ul class="pagination justify-content-center">
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("All", new { page }))
+</ul>
 <hr class="eventures-bg-color hr-2 w-75" />
+
 

@@ -31,12 +31,12 @@ namespace Eventures.Services
             await this.context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<EventServiceModel>> GetAll()
+        public IEnumerable<EventServiceModel> GetAll()
         {
-            return await this.context.Events
+            return this.context.Events
                 .Where(e => e.TotalTickets > 0)
                 .ProjectTo<EventServiceModel>()
-                .ToArrayAsync();
+                .ToArray();
         }
     }
 }

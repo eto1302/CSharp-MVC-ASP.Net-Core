@@ -8,6 +8,6 @@ namespace Eventures.Services.Contracts
     {
         Task CreateAsync(EventServiceModel model);
 
-        Task<IEnumerable<EventServiceModel>> GetAll();
+        IEnumerable<EventServiceModel> GetAll();
     }
 }
