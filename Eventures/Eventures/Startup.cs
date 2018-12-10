@@ -20,6 +20,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
+using Eventures.Mapping;
 
 namespace Eventures
 {
@@ -79,7 +80,7 @@ namespace Eventures
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider provider, ILoggerFactory loggerFactory, ApplicationDbContext context)
         {
-            Mapper.Initialize(config => config.AddProfile<MappingConfiguration>());
+            AutoMapperConfig.ConfigureMapping();
             loggerFactory.AddDebug();
 
             if (env.IsDevelopment())

@@ -8,6 +8,6 @@ namespace Eventures.Mapping
 {
     public interface IHaveCustomMapping
     {
-        void ConfigureMapping(Profile mapper);
+        void ConfigureMapping(IMapperConfigurationExpression mapper);
     }
 }
